@@ -7,16 +7,19 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function PostConfirmation({ 
-  // TODO: change to use variables from supabase
-    establishmentName = "name of establishment",
-    dateEarned = "02/02/2026",
-    stampCount = "___",
-    foodImage = jason
-  }) {
+  establishmentName = "name of establishment",
+  dateEarned = "02/02/2026",
+  stampCount = "___",
+  foodImage = jason
+}) {
   const router = useRouter();
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-gray-50 flex items-center justify-center p-4">
+    <div 
+      className="bg-gray-50 flex items-center justify-center p-4"
+      // TODO: change 24px to the actual height of the navbar once it's implemented
+      style={{ minHeight: 'calc(100vh - 24px' }}
+    >
       <div className="p-6 max-w-md w-full font-mono text-black">
         <div className="text-center mb-12">
           <h2 className="text-lg mb-2">congrats!</h2>
@@ -28,8 +31,10 @@ export default function PostConfirmation({
         <div className="relative mb-6 flex justify-center">
           {/* background */}
           <div 
-            className="absolute w-[340px] h-[340px] bg-white border-2 border-gray-200"
+            className="absolute bg-white border-2 border-gray-200 w-[330px] h-[330px]"
             style={{ 
+              maxWidth: '100%', 
+              height: 'auto',
               transform: 'rotate(1deg)',
               zIndex: 0
             }}
@@ -53,7 +58,7 @@ export default function PostConfirmation({
             />
             
             <div 
-              className="absolute bottom-[-15] right-2"
+              className="absolute bottom-[-15px] right-2"
               style={{ transform: 'rotate(8deg)' }}
             >
               <Image 
@@ -67,7 +72,7 @@ export default function PostConfirmation({
           </div>
         </div>
 
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-6">
           <p className="text-base font-medium mb-1">{establishmentName}</p>
           <p className="text-sm">date earned: {dateEarned}</p>
         </div>
