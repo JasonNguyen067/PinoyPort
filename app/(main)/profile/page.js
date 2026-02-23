@@ -14,26 +14,8 @@ export default function ProfilePage() {
     { id: 5, name: 'Establishment 5', city: 'City', state: 'State' },
   ]);
 
-  const moveUp = (index) => {
-    if (index === 0) return;
-    const newEstablishments = [...establishments];
-    [newEstablishments[index], newEstablishments[index - 1]] = 
-    [newEstablishments[index - 1], newEstablishments[index]];
-    setEstablishments(newEstablishments);
-  };
-
-  const moveDown = (index) => {
-    if (index === establishments.length - 1) return;
-    const newEstablishments = [...establishments];
-    [newEstablishments[index], newEstablishments[index + 1]] = 
-    [newEstablishments[index + 1], newEstablishments[index]];
-    setEstablishments(newEstablishments);
-  };
-
   return (
     <div style={styles.pageContainer}>
-      {/* Ranking Section */}
-      <div style={styles.rankingSection}>
         <h2 style={styles.title}>Ranking</h2>
         
         <div style={styles.list}>
@@ -42,6 +24,7 @@ export default function ProfilePage() {
               <div style={styles.bullseye}>
                 <BsBullseye size={30} color="black" />
               </div>
+              
               <div style={styles.content}>
                 <div style={styles.name}>{establishment.name}</div>
                 <div style={styles.location}>
@@ -49,35 +32,10 @@ export default function ProfilePage() {
                   {establishment.city}, {establishment.state}
                 </div>
               </div>
-              
-              <div style={styles.controls}>
-                <button
-                  onClick={() => moveUp(index)}
-                  disabled={index === 0}
-                  style={{
-                    ...styles.button,
-                    opacity: index === 0 ? 0.3 : 1,
-                  }}
-                >
-                  <ArrowUpwardIcon style={{ fontSize: '20px' }} />
-                </button>
-                
-                <button
-                  onClick={() => moveDown(index)}
-                  disabled={index === establishments.length - 1}
-                  style={{
-                    ...styles.button,
-                    opacity: index === establishments.length - 1 ? 0.3 : 1,
-                  }}
-                >
-                  <ArrowDownwardIcon style={{ fontSize: '20px' }} />
-                </button>
-              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
   );
 }
 
