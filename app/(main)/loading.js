@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../public/logo.png";
-import loadingbar from "../public/loadingbar.png";
+import logo from "../../public/logo.png";
+import loadingbar from "../../public/loadingbar.png";
 import Image from "next/image";
 
 export default function Loading() {
