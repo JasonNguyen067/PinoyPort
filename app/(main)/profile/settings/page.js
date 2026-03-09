@@ -1,3 +1,4 @@
+import "./settings.css";
 /*so page doesn't have to be reloaded*/
 import Link from "next/link";
 /*icons for page*/
