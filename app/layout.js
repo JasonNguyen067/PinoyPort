@@ -1,3 +1,4 @@
+import { Geist, Geist_Mono, Azeret_Mono, Commissioner } from "next/font/google";
 import "./globals.css";
 import { Geist, Geist_Mono, Azeret_Mono } from "next/font/google";
 import { Commissioner } from "next/font/google";
@@ -14,6 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const azeretMono = Azeret_Mono({
+  variable: "--font-azeret-mono",
+  subsets: ["latin"],
+});
+
+const commissioner = Commissioner({
+  variable: "--font-commissioner",
 /* heading font*/
 export const azeretMono = Azeret_Mono({
   variable: "--font-azeret-mono",
@@ -37,6 +45,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
+        className={`${geistSans.variable} ${geistMono.variable} ${azeretMono.variable} ${commissioner.variable} antialiased`}
         className={`
           ${geistSans.variable}
           ${geistMono.variable}
