@@ -123,10 +123,10 @@ export default function RestaurantFeedPage() {
             aria-hidden
           />
           {/* Header over map */}
-          <div className="absolute top-0 left-0 right-0 z-20 px-4 py-3 flex items-center justify-between bg-transparent">
+          <div className="absolute top-0 left-0 right-0 z-20 px-4 py-3 flex items-center justify-center bg-transparent">
             <Link
               href="/"
-              className="p-2 -ml-2 rounded-full text-gray-700 hover:bg-gray-100"
+              className="p-2 -ml-2 rounded-full text-gray-700 hover:bg-gray-100 absolute left-4"
               aria-label="Back"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,58 +136,58 @@ export default function RestaurantFeedPage() {
             <h1 className="font-[var(--font-azeret-mono)] text-xl font-medium text-gray-900">
               PinoyPort
             </h1>
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                className="p-2 rounded-full text-gray-600 hover:bg-gray-100"
-                aria-label="Saved"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                  />
-                </svg>
-              </button>
-              <Link
-                href="/profile"
-                className="p-2 rounded-full text-gray-600 hover:bg-gray-100"
-                aria-label="Profile"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-              </Link>
-            </div>
+            <button
+              type="button"
+              className="p-2 rounded-full text-gray-600 hover:bg-gray-100 absolute right-4"
+              aria-label="Saved"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                />
+              </svg>
+            </button>
           </div>
           {/* Search + filters overlayed on map */}
           <div className="absolute top-16 left-4 right-4 z-10">
             <div className="rounded-2xl bg-transparent px-3 py-3">
-              <div className="flex gap-3 items-center">
-                <div
-                  className="flex items-center gap-2 rounded-full bg-white px-4 h-10 w-[291px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
-                  style={{ opacity: 1 }}
-                >
-                  <svg className="w-5 h-5 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              <div className="flex gap-3 items-start justify-center">
+                <div className="flex flex-col">
+                  <div
+                    className="flex items-center gap-2 rounded-full bg-white px-4 h-10 w-[291px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+                    style={{ opacity: 1 }}
+                  >
+                    <svg className="w-5 h-5 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    <input
+                      type="search"
+                      placeholder="Search"
+                      className="flex-1 bg-transparent text-gray-900 placeholder-gray-500 outline-none text-sm"
                     />
-                  </svg>
-                  <input
-                    type="search"
-                    placeholder="Search"
-                    className="flex-1 bg-transparent text-gray-900 placeholder-gray-500 outline-none text-sm"
-                  />
+                  </div>
+                  <div className="flex flex-wrap gap-[6px] mt-3">
+                    {MOCK_TAGS.map((tag) => (
+                      <button
+                        key={tag}
+                        type="button"
+                        className="inline-flex items-center justify-center gap-[6px] h-5 px-2 rounded-[6px] border border-[#718096] bg-transparent text-[11px] leading-none text-gray-700"
+                      >
+                        {tag}
+                        <span className="text-gray-500 text-[10px]" aria-hidden>
+                          ×
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -198,20 +198,6 @@ export default function RestaurantFeedPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 </button>
-              </div>
-              <div className="flex flex-wrap gap-[6px] mt-3">
-                {MOCK_TAGS.map((tag) => (
-                  <button
-                    key={tag}
-                    type="button"
-                    className="inline-flex items-center justify-center gap-[6px] h-5 px-2 rounded-[6px] border border-[#718096] bg-transparent text-[11px] leading-none text-gray-700"
-                  >
-                    {tag}
-                    <span className="text-gray-500 text-[10px]" aria-hidden>
-                      ×
-                    </span>
-                  </button>
-                ))}
               </div>
             </div>
           </div>
