@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Azeret_Mono, Commissioner } from "next/font/google";
 import "./globals.css";
-
+import { ChakraProvider } from '@chakra-ui/react'
 /* UI font */
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +38,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${azeretMono.variable} ${commissioner.variable} antialiased`}
       >
-        {children}
+        <ChakraProvider>
+          {children}
+        </ChakraProvider>
       </body>
     </html>
   );
