@@ -33,6 +33,11 @@ export default function Passport() {
     if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
   }
 
+  const getRotation = (id) => {
+    const pseudoRandom = (id * 137) % 51; 
+    return pseudoRandom - 25; 
+  };
+
   return (
     <div className="flex flex-col h-screen w-full font-mono">
       <div className="flex items-center px-6 py-8 max-h-0.5">
@@ -54,22 +59,26 @@ export default function Passport() {
         <div className="relative flex h-full w-full flex-col rounded-r-[28px] bg-white shadow-[0px_0px_8px_4px_rgba(0,0,0,0.28)]">
           <div className="flex-1 px-8 pt-3">
             <div className="grid grid-cols-2 gap-x-[19px] gap-y-[9px]">
-              {currentStamps.map((stamp) => (
-                <div key={stamp.id} className="flex flex-col items-center gap-3">
-                  <div className="relative flex h-[12vh] w-[12vh] items-center justify-center rounded-full bg-gray-100 p-2 mix-blend-multiply">
-                    <Image
-                      src={stamp.imageUrl}
-                      alt={stamp.name}
-                      fill
-                      className="object-contain p-2"
-                      sizes="(max-width: 768px) 100vw, 112px"
-                    />
+              {currentStamps.map((stamp) => {
+                const rotationAngle = getRotation(stamp.id || index);
+                return (
+                  <div key={stamp.id} className="flex flex-col items-center gap-3">
+                    <div className="relative flex h-[12vh] w-[12vh] items-center justify-center rounded-full bg-gray-100 p-2 mix-blend-multiply"
+                    style={{ transform: `rotate(${rotationAngle}deg)` }}>
+                      <Image
+                        src={stamp.imageUrl}
+                        alt={stamp.name}
+                        fill
+                        className="object-contain p-2"
+                        sizes="(max-width: 768px) 100vw, 112px"
+                      />
+                    </div>
+                    <p className="text-center text-sm font-bold leading-tight text-gray-800">
+                      {stamp.name}
+                    </p>
                   </div>
-                  <p className="text-center text-sm font-bold leading-tight text-gray-800">
-                    {stamp.name}
-                  </p>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
 
