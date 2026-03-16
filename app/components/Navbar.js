@@ -1,3 +1,17 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 export default function Navbar() {
-  return <nav>Navbar</nav>;
+  const pathname = usePathname();
+
+  if (pathname === "/passport") {
+    return null;
+  }
+
+  return (
+    <nav>
+      Navbar
+    </nav>
+  );
 }
